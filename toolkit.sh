@@ -1,5 +1,12 @@
 #!/bin/bash
 
+alias ll="ls -la"
+alias gs="git status"
+alias gc="git commit -m"
+alias gca="git commit -a -m"  # Commit all changes with message
+alias python='python3'
+alias pip='pip3'
+
 rungo () {
     if [ $# -eq 0 ]; then
         nodemon --exec go run main.go --signal SIGTERM
@@ -42,10 +49,6 @@ clear_npm_cache () {
     npm cache clean --force
 }
 
-code_here () {
-    code .
-}
-
 disk_usage () {
     df -h
 }
@@ -54,4 +57,4 @@ largest_files () {
     du -ah . | sort -rh | head -n 10
 }
 
-export -f rungo pyserve docker_run docker_cleanup sys_info npkill clean_node_modules clear_npm_cache code_here disk_usage largest_files
+export -f rungo pyserve docker_run docker_cleanup sys_info npkill clean_node_modules clear_npm_cache disk_usage largest_files
