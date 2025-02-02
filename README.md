@@ -1,6 +1,13 @@
+# 1. Direct installation
+```bash
+curl -sL https://nated.in/tk/install.sh -o install.sh && chmod +x install.sh && ./install.sh
 
+or 
 
-# Bash Functions Script
+curl -sL https://raw.githubusercontent.com/lifeofsoumya/linux-toolkit/main/install.sh -o install.sh && chmod +x install.sh && ./install.sh
+```
+
+# 2. Using Bash Functions Script
 
 This script contains useful Bash functions for development, such as running Go apps with `nodemon`, serving Python HTTP servers, cleaning `node_modules`, managing Docker containers, and more.
 
