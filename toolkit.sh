@@ -19,6 +19,23 @@ pyserve () {
     python -m http.server "$1"
 }
 
+venv() {
+    if [[ "$VIRTUAL_ENV" != "" ]]; then
+        echo "🛑 Deactivating virtual environment: $VIRTUAL_ENV"
+        deactivate
+        return 0 2>/dev/null || exit 0
+    fi
+
+    if [ -d "venv" ]; then
+        echo "⚡ Activating existing virtual environment..."
+    else
+        echo "✨ Creating new virtual environment..."
+        python -m venv venv
+    fi
+
+    source venv/bin/activate
+}
+
 docker_run () {
     docker build -t "$1" . && docker run -it --rm "$1"
 }
@@ -57,4 +74,4 @@ largest_files () {
     du -ah . | sort -rh | head -n 10
 }
 
-export -f rungo pyserve docker_run docker_cleanup sys_info npkill clean_node_modules clear_npm_cache disk_usage largest_files
+export -f rungo pyserve venv docker_run docker_cleanup sys_info npkill clean_node_modules clear_npm_cache disk_usage largest_files
