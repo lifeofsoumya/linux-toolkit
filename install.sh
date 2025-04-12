@@ -84,7 +84,33 @@ largest_files () {
     du -ah . | sort -rh | head -n 10
 }
 
-export -f rungo pyserve docker_run docker_cleanup sys_info npkill clean_node_modules clear_npm_cache disk_usage largest_files
+ltk() {
+    echo "🧰 Available Linux Toolkit Commands:"
+    echo
+    echo "Aliases:"
+    echo "  ll                  - List all files and directories with details"
+    echo "  gs                  - Git status"
+    echo "  gc                  - Git commit with a message"
+    echo "  gca                 - Git commit all changes with a message"
+    echo "  python              - Alias for python3"
+    echo "  pip                 - Alias for pip3"
+    echo
+    echo "Functions:"
+    echo "  venv                - Toggle Python virtual environment (create/activate/deactivate)"
+    echo "  rungo [file]        - Run Go file using nodemon (defaults to main.go if no arg)"
+    echo "  pyserve [port]      - Serve current directory over HTTP using Python"
+    echo "  docker_run <name>   - Build and run a Docker image interactively"
+    echo "  docker_cleanup      - Remove dangling Docker containers and images"
+    echo "  sys_info            - Display CPU and memory info"
+    echo "  npkill              - Open npkill for cleaning node_modules folders"
+    echo "  clean_node_modules  - Delete node_modules and lock files, then reinstall"
+    echo "  clear_npm_cache     - Clear npm cache forcefully"
+    echo "  disk_usage          - Show disk usage in human-readable format"
+    echo "  largest_files       - Show 10 largest files/directories in current directory"
+    echo "  linux-tk            - List all toolkit commands with descriptions"
+}
+
+export -f rungo pyserve docker_run docker_cleanup sys_info npkill clean_node_modules clear_npm_cache disk_usage largest_files ltk
 "
 
 if ! grep -q "linux toolkit - custom aliases and functions" ~/.bashrc; then
